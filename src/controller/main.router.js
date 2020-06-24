@@ -11,7 +11,7 @@ const { AuthenticationError } = require("../module/error");
 
 function requireApiToken() {
   return (req, res, next) => {
-    const apiToken = req.get("api_token");
+    const apiToken = req.query.api_token;
     if (!apiToken || apiToken.length === 0) {
       throw new AuthenticationError();
     }
@@ -32,11 +32,11 @@ router.get(
   })
 );
 
-router.post(
+router.get(
   `/toggle`,
   requireApiToken(),
   wrapAsync(async (req, res) => {
-    const apiToken = req.get("api_token");
+    const apiToken = req.query.api_token;
     const current = await getCurrentEntry(apiToken);
     if (current.data === null) {
       await startEntry(apiToken);
