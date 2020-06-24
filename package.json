@@ -1,0 +1,39 @@
+{
+  "name": "lametric-time-toggl",
+  "version": "1.0.0",
+  "description": "Small node backend for LaMetric Time triggered toggl.com time tracking.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxsommer/lametric-time-toggl.git"
+  },
+  "keywords": [
+    "toggl",
+    "node",
+    "lametric"
+  ],
+  "author": "Max Sommer",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/maxsommer/lametric-time-toggl/issues"
+  },
+  "homepage": "https://github.com/maxsommer/lametric-time-toggl#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-request-id": "^1.4.1",
+    "helmet": "^3.23.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4"
+  }
+}
