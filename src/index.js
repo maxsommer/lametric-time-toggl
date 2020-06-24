@@ -8,7 +8,7 @@ const mainRouter = require("./controller/main.router");
 const { AuthenticationError } = require("./module/error");
 
 const app = new express();
-const port = process.env.PORT || 8080;
+const port = 80; // process.env.PORT || 8080;
 
 app.use(helmet());
 app.use(cors());
