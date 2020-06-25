@@ -40,6 +40,41 @@ Response:
 }
 ```
 
+### Get display for current timer
+
+If no timer is running the 'stop' icon with text '--:--' will be displayed.  
+Otherwise icon 'play' with the text of hours and minutes of current timer will be displayed (e.g. '02:15').
+
+```curl
+curl https://lametric-time-toggl.herokuapp.com/api/v1/current?api_token=XXX_YOUR_TOKEN_XXX
+```
+
+Running timer response:
+
+```json
+{
+  "frames": [
+    {
+      "text": "02:13",
+      "icon": "38671"
+    }
+  ]
+}
+```
+
+Stopped timer response:
+
+```json
+{
+  "frames": [
+    {
+      "text": "--:--",
+      "icon": "38674"
+    }
+  ]
+}
+```
+
 ### Toggle timer
 
 If no timer for current user is active will start a new one. Otherwise will stop the running timer.  
