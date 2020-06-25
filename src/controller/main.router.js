@@ -9,6 +9,7 @@ const router = require("express").Router();
 const { wrapAsync } = require("@rimiti/express-async");
 const { AuthenticationError } = require("../module/error");
 const { DateTime } = require("luxon");
+const { handleGetPrivacy } = require("./privacy.controller");
 
 const ICONS = {
   PLAY_ICON: "38671",
@@ -122,5 +123,7 @@ function getTimerString(hours, minutes) {
 
   return `${hoursString}:${minutesString}`;
 }
+
+router.get("/privacy", handleGetPrivacy);
 
 module.exports = { router };
