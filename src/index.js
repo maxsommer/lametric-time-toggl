@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const expressRequestId = require("express-request-id");
 const mainRouter = require("./controller/main.router");
 const { AuthenticationError } = require("./module/error");
+const morgan = require("morgan");
 
 const app = new express();
 const port = process.env.PORT || 8080;
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(expressRequestId());
 app.use(bodyParser());
 app.use(compression());
+app.use(morgan(":date[iso] :method :url :status :response-time ms"));
 app.use(`/api/v1`, mainRouter.router);
 app.use(`*`, (req, res) => {
   res.status(404).send();
@@ -23,7 +25,7 @@ app.use((error, req, res, next) => {
   if (error instanceof AuthenticationError) {
     res.status(401).send({
       meta: {
-        message: `Header 'api_token' did not contain a valid toggl.com API token.`,
+        message: `Query Parameter 'api_token' must contain valid toggl.com API token.`,
       },
     });
     return;

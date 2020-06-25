@@ -38,13 +38,25 @@ router.get(
   wrapAsync(async (req, res) => {
     const apiToken = req.query.api_token;
     const current = await getCurrentEntry(apiToken);
+    console.info({
+      requestId: req.id,
+      message: `Toggling timer for ${apiToken}`,
+    });
     if (current.data === null) {
-      await startEntry(apiToken);
+      const newEntry = await startEntry(apiToken);
+      console.info({
+        requestId: req.id,
+        message: `Started entry with id ${newEntry.data.id}`,
+      });
       res.send({ meta: { message: `Started entry.` } });
       return;
     }
 
-    await stopEntry(apiToken, current.data.id);
+    const stoppedEntry = await stopEntry(apiToken, current.data.id);
+    console.info({
+      requestId: req.id,
+      message: `Stopped entry with id ${stoppedEntry.data.id}`,
+    });
     res.send({ meta: { message: `Stopped entry.` } });
   })
 );
