@@ -14,13 +14,22 @@ const { handleGetPrivacy } = require("./privacy.controller");
 const ICONS = {
   PLAY_ICON: "38671",
   STOP_ICON: "38674",
+  LOCK: "133",
 };
 
 function requireApiToken() {
   return (req, res, next) => {
     const apiToken = req.query.api_token;
     if (!apiToken || apiToken.length === 0) {
-      throw new AuthenticationError();
+      const frames = [
+        {
+          text: `Enter API token`,
+          icon: ICONS.LOCK,
+        },
+      ];
+
+      res.send({ frames });
+      return;
     }
     next();
   };
