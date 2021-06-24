@@ -27,7 +27,7 @@ async function togglRequest(method, endpoint, apiToken, data) {
   try {
     response = await http({
       method,
-      url: `https://www.toggl.com/api/v8${endpoint}`,
+      url: `https://api.track.toggl.com/api/v8${endpoint}`,
       auth: {
         username: apiToken,
         password: `api_token`,
