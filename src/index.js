@@ -23,6 +23,9 @@ app.use(`*`, (req, res) => {
 });
 app.use((error, req, res, next) => {
   if (error instanceof AuthenticationError) {
+    console.error(
+      `Toggl API responded with error 403 for request with id '${req.id}'.`
+    );
     res.status(401).send({
       meta: {
         message: `Query Parameter 'api_token' must contain valid toggl.com API token.`,

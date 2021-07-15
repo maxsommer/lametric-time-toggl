@@ -35,10 +35,10 @@ async function togglRequest(method, endpoint, apiToken, data) {
       data,
     });
   } catch (error) {
-    console.error(error);
     if (error.response.status === 403) {
       throw new AuthenticationError();
     }
+    console.error(error);
     throw error;
   }
 
