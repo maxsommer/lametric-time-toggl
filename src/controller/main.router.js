@@ -56,7 +56,7 @@ router.get(
     const current = await getCurrentEntry(apiToken);
     console.info({
       requestId: req.id,
-      message: `Toggling timer for ${apiToken}`,
+      message: `Toggling timer`,
     });
     if (current.data === null) {
       const newEntry = await startEntry(apiToken);
