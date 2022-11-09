@@ -2,6 +2,8 @@
 
 Small node backend to handle LaMetric Time triggered requests to toggl.com
 
+*Important note:* This app is no longer hosted and available on LaMetric. If you want to use it you need to host it yourself unfortunately.
+
 ## Getting started
 
 1. Go to ['Profile Settings' on toggl.com](https://toggl.com/app/profile)
@@ -9,10 +11,6 @@ Small node backend to handle LaMetric Time triggered requests to toggl.com
 3. Open up the smartphone LaMetric Time app and search for 'toggl.com (unofficial)'
 4. Install the app.
 5. Select the app and enter your API Token there to get started tracking your time.
-
-## Environments
-
-The only production environment is running at Heroku at `https://lametric-time-toggl.herokuapp.com/api/v1`.
 
 ## REST API
 
@@ -22,7 +20,7 @@ Delivers information about the API status and version.
 Request:
 
 ```curl
-curl https://lametric-time-toggl.herokuapp.com/api/v1
+curl /api/v1
 ```
 
 Response:
@@ -46,7 +44,7 @@ If no timer is running the 'stop' icon with text '--:--' will be displayed.
 Otherwise icon 'play' with the text of hours and minutes of current timer will be displayed (e.g. '02:15').
 
 ```curl
-curl https://lametric-time-toggl.herokuapp.com/api/v1/current?api_token=XXX_YOUR_TOKEN_XXX
+curl /api/v1/current?api_token=XXX_YOUR_TOKEN_XXX
 ```
 
 Running timer response:
@@ -81,7 +79,7 @@ If no timer for current user is active will start a new one. Otherwise will stop
 Request:
 
 ```curl
-curl https://lametric-time-toggl.herokuapp.com/api/v1/toggle?api_token=XXX_YOUR_TOKEN_XXX
+curl /api/v1/toggle?api_token=XXX_YOUR_TOKEN_XXX
 ```
 
 Response for started entry:
